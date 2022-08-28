@@ -72,7 +72,7 @@
         Se il conteggio carte è alto significa che nel mazzo sono presenti carte dal valore alto
 
     </p>
-    <div class="m-3">
+    <div class="m-auto" style="position: relative; height:40vh; width:95vw">
         <canvas id="myChart"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -92,7 +92,9 @@
         const config = {
             type: 'line',
             data: data,
-            options: {}
+            options: {
+                maintainAspectRatio: false,
+            }
         };
 
         const myChart = new Chart(

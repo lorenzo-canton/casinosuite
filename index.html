@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casinò suite</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            width: 86%;
+            padding: 4%;
+            background-image: url("wallpaper.jpg");
+        }
+        h1{
+            margin-bottom: 4rem;
+            color: wheat;
+        }
+        button {
+            width: 100%;
+            height: 4rem;
+            background-color: wheat;
+        }
+        p {
+            width: 30%;
+            background-color: wheat;
+            margin-top: 4rem;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- CONTATORE -->
+    <h1 id="contatore">Conteggio: 0</h1>
+
+    <!-- PIU UNO -->
+    <button onclick="plusOne()">
+        <h2>2  -  6</h2>
+    </button>
+
+    <!-- PIU ZERO -->
+    <button onclick="plusZero()">
+        <h2>7  -  9</h2>
+    </button>
+
+    <!-- MENO UNO -->
+    <button onclick="minusOne()">
+        <h2>10  -  A</h2>
+    </button>
+    <script>
+        var c = 0;
+        function plusOne() {
+            c++;
+            document.getElementById("contatore").innerHTML = "Conteggio: " + c;
+        }
+        function plusZero() {
+            document.getElementById("contatore").innerHTML = "Conteggio: " + c;
+        }
+        function minusOne() {
+            c--;
+            document.getElementById("contatore").innerHTML = "Conteggio: " + c;
+        }
+    </script>
+    <p>
+        Il conteggio viene effettuato su qualsiasi carta uscita dal mazzo.
+        Per ogni carta compresa tra 2 e 6 si aggiunge uno al conteggio per ogni
+        carta tra 7 e 9 non si aggiunge nulla e per ogni carta dal 10 all' asso si toglie 1.
+        <br>
+        <br>
+        Se il conteggio carte è alto significa che nel mazzo sono presenti carte dal valore alto
+
+    </p>
+</body>
+</html>

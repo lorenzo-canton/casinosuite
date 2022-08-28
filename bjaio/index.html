@@ -14,7 +14,7 @@
             color: wheat;
         }
         button {
-            background-color: wheat;
+            background-color:wheat;
         }
         p {
             background-color: wheat;
@@ -42,6 +42,92 @@
             </ul>
         </div>
     </nav>
+
+    <h1 id="cards" class="ml-4">Carte: </h1>
+    <div class="d-flex justify-content-around mb-4">
+        <button class="w-25" id="giocatore" onclick="setGiocatore()">
+            <h2>GIOCATORE</h2>
+        </button>
+        <button class="w-25" id="banco" onclick="setBanco()">
+            <h2>BANCO</h2>
+        </button>
+        <button class="w-25" id="altro" onclick="setAltro()">
+            <h2>ALTRO</h2>
+        </button>
+    </div>
+    <div class="d-flex justify-content-around mb-4">
+        <button class="w-25" onclick="newCard('2')">
+            <h2>2</h2>
+        </button>
+        <button class="w-25" onclick="newCard('3')">
+            <h2>3</h2>
+        </button>
+        <button class="w-25" onclick="newCard('4')">
+            <h2>4</h2>
+        </button>
+    </div>
+    <div class="d-flex justify-content-around mb-4">
+        <button class="w-25" onclick="newCard('5')">
+            <h2>5</h2>
+        </button>
+        <button class="w-25" onclick="newCard('6')">
+            <h2>6</h2>
+        </button>
+        <button class="w-25" onclick="newCard('7')">
+            <h2>7</h2>
+        </button>
+    </div>
+    <div class="d-flex justify-content-around mb-4">
+        <button class="w-25" onclick="newCard('8')">
+            <h2>8</h2>
+        </button>
+        <button class="w-25" onclick="newCard('9')">
+            <h2>9</h2>
+        </button>
+        <button class="w-25" onclick="newCard('0')">
+            <h2>10 J Q K</h2>
+        </button>
+    </div>
+    <div class="d-flex justify-content-around">
+        <button class="w-25" onclick="newCard('A')">
+            <h2>A</h2>
+        </button>
+        <button class="w-25" onclick="">
+            <h2>INVIA</h2>
+        </button>
+        <button class="w-25" onclick="">
+            <h2>ANNULLA</h2>
+        </button>
+    </div>
+    <script>
+        var cards = [];
+        var player = "";
+        function resetColor() {
+            document.getElementById("giocatore").style.backgroundColor = "wheat";
+            document.getElementById("banco").style.backgroundColor = "wheat";
+            document.getElementById("altro").style.backgroundColor = "wheat";
+        }
+        function setGiocatore() {
+            player = "g";
+            resetColor()
+            document.getElementById("giocatore").style.backgroundColor = "darkgray"
+        }
+        function setBanco() {
+            player = "b";
+            resetColor()
+            document.getElementById("banco").style.backgroundColor = "darkgray";
+        }
+        function setAltro() {
+            player = "";
+            resetColor()
+            document.getElementById("altro").style.backgroundColor = "darkgray";
+        }
+        function newCard(value) {
+            cards.push(player + value);
+            document.getElementById("cards").innerHTML = cards.join(" ");
+        }
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -19,6 +19,9 @@
         p {
             background-color: wheat;
         }
+        canvas {
+            background-color:wheat;
+        }
     </style>
 </head>
 <body>
@@ -60,20 +63,6 @@
             <h2>10  -  A</h2>
         </button>
     </div>
-    <script>
-        var c = 0;
-        function plusOne() {
-            c++;
-            document.getElementById("contatore").innerHTML = "Conteggio: " + c;
-        }
-        function plusZero() {
-            document.getElementById("contatore").innerHTML = "Conteggio: " + c;
-        }
-        function minusOne() {
-            c--;
-            document.getElementById("contatore").innerHTML = "Conteggio: " + c;
-        }
-    </script>
     <p class="m-3 p-2">
         Il conteggio viene effettuato su qualsiasi carta uscita dal mazzo.
         Per ogni carta compresa tra 2 e 6 si aggiunge uno al conteggio per ogni
@@ -83,6 +72,61 @@
         Se il conteggio carte è alto significa che nel mazzo sono presenti carte dal valore alto
 
     </p>
+    <div class="m-3">
+        <canvas id="myChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const labels = [];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+            label: 'conteggio / tempo',
+            backgroundColor: 'rgb(169, 169, 169)',
+            borderColor: 'rgb(0, 0, 0)',
+            data: [],
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+        function addData(chart, label, data) {
+            chart.data.labels.push(label);
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.push(data);
+            });
+            chart.update();
+        }
+
+        var n = 0;
+        var c = 0;
+        function plusOne() {
+            c++;
+            n++;
+            addData(myChart, n, c);
+            document.getElementById("contatore").innerHTML = "Conteggio: " + c;
+        }
+        function plusZero() {
+            n++;
+            addData(myChart, n, c);
+            document.getElementById("contatore").innerHTML = "Conteggio: " + c;
+        }
+        function minusOne() {
+            c--;
+            n++;
+            addData(myChart, n, c);
+            document.getElementById("contatore").innerHTML = "Conteggio: " + c;
+        }
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
